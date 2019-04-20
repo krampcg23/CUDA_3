@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdio.h>
+#include <ctime>
 #include <assert.h>
 
 __global__ void allPrefixSums (long int* A_gpu, long int* arr, int N) {
