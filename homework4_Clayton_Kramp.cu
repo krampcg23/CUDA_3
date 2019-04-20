@@ -27,6 +27,8 @@ int main(int argc, char* argv[]) {
     }
 
     long int* A_cpu = new long int[N];
+
+    // Sequential Code for all prefix sum
     A_cpu[0] = 0;
     for (int i = 1; i < N; i++) {
         A_cpu[i] += (arr[i-1] + A_cpu[i-1]);
@@ -41,6 +43,7 @@ int main(int argc, char* argv[]) {
     dim3 threadsPerBlock(1024, 1, 1);
     dim3 numBlocks(N / 1024 + 1, 1, 1);
 
+    // Make the parallel call
     allPrefixSums<<<numBlocks, threadsPerBlock>>>(deviceA, deviceArr, N);
 
     long int* A_gpu = new long int[N];;
