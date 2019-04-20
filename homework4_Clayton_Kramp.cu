@@ -18,9 +18,11 @@ int main(int argc, char* argv[]) {
     long int* A_cpu = new long int[N];
     A_cpu[0] = 0;
     for (int i = 1; i < N; i++) {
-        for (int j = 0; j < i; j++) {
-            A_cpu[i] += arr[j];
-        }
+        A_cpu[i] += (arr[i-1] + A_cpu[i-1]);
+    }
+
+    for (int i = 0; i < N; i++) {
+        printf("%i, %i\n", arr[i], A_cpu[i]);
     }
     return 0;
 }
